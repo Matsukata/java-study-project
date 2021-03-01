@@ -1,9 +1,6 @@
 package com.java.practice.task01.util;
 
 public class SortingMethods {
-    public static void main(String[] args) {
-    }
-
     public void bubbleSortWithFor(int[] numbers) {
         for (int i = (numbers.length - 1); i > 0; i--) {
             for (int j = 1; j <= i; j++) {
@@ -32,8 +29,7 @@ public class SortingMethods {
     }
 
     public void insertionSort(int[] numbers) {
-        int n = numbers.length;
-        for (int i = 1; i < n; ++i) {
+        for (int i = 1; i < numbers.length; i++) {
             int key = numbers[i];
             int j = i - 1;
             while (j >= 0 && numbers[j] > key) {
@@ -60,11 +56,11 @@ public class SortingMethods {
         }
     }
 
-    public void quickSort(int[] arr, int begin, int end) {
+    public void quickSort(int[] numbers, int begin, int end) {
         if (begin < end) {
-            int partitionIndex = partition(arr, begin, end);
-            quickSort(arr, begin, partitionIndex - 1);
-            quickSort(arr, partitionIndex + 1, end);
+            int partitionIndex = partition(numbers, begin, end);
+            quickSort(numbers, begin, partitionIndex - 1);
+            quickSort(numbers, partitionIndex + 1, end);
         }
     }
 
@@ -85,39 +81,39 @@ public class SortingMethods {
         return i + 1;
     }
 
-    public void mergeSort(int[] numbers, int n) {
+    public void mergeSort(int[] a, int n) {
         if (n < 2) {
             return;
         }
         int mid = n / 2;
-        int[] numbers1 = new int[mid];
-        int[] numbers2 = new int[n - mid];
+        int[] l = new int[mid];
+        int[] r = new int[n - mid];
 
         for (int i = 0; i < mid; i++) {
-            numbers1[i] = numbers[i];
+            l[i] = a[i];
         }
         for (int i = mid; i < n; i++) {
-            numbers2[i - mid] = numbers[i];
+            r[i - mid] = a[i];
         }
-        mergeSort(numbers1, mid);
-        mergeSort(numbers2, n - mid);
-        merge(numbers, numbers1, numbers2, mid, n - mid);
+        mergeSort(l, mid);
+        mergeSort(r, n - mid);
+        merge(a, l, r, mid, n - mid);
     }
 
-    public void merge(int[] numbers, int[] numbers1, int[] numbers2, int left, int right) {
+    public void merge(int[] a, int[] l, int[] r, int left, int right) {
         int i = 0, j = 0, k = 0;
         while (i < left && j < right) {
-            if (numbers1[i] <= numbers2[j]) {
-                numbers[k++] = numbers1[i++];
+            if (l[i] <= r[j]) {
+                a[k++] = l[i++];
             } else {
-                numbers[k++] = numbers2[j++];
+                a[k++] = r[j++];
             }
         }
         while (i < left) {
-            numbers[k++] = numbers1[i++];
+            a[k++] = l[i++];
         }
         while (j < right) {
-            numbers[k++] = numbers2[j++];
+            a[k++] = r[j++];
         }
     }
 }
