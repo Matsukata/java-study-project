@@ -1,19 +1,10 @@
 package com.java.practice.task01.util;
 
-import java.util.Arrays;
-
 public class SortingMethods {
     public static void main(String[] args) {
-        int[] numbers = new int[]{2, 6, 3, 9};
-        System.out.println(Arrays.toString(new SortingMethods().bubbleSortWithFor(numbers)));
-        System.out.println(Arrays.toString(new SortingMethods().bubbleSortWithWhile(numbers)));
-        System.out.println(Arrays.toString(new SortingMethods().insertionSort(numbers)));
-        System.out.println(Arrays.toString(new SortingMethods().selectionSort(numbers)));
-        System.out.println(Arrays.toString(new SortingMethods().quickSort(numbers,0,numbers.length-1)));
-        System.out.println(Arrays.toString(new SortingMethods().mergeSort(numbers)));
     }
 
-    private int[] bubbleSortWithFor(int[] numbers) {
+    public void bubbleSortWithFor(int[] numbers) {
         for (int i = (numbers.length - 1); i > 0; i--) {
             for (int j = 1; j <= i; j++) {
                 if (numbers[j - 1] > numbers[j]) {
@@ -23,10 +14,9 @@ public class SortingMethods {
                 }
             }
         }
-        return numbers;
     }
 
-    private int[] bubbleSortWithWhile(int[] numbers) {
+    public void bubbleSortWithWhile(int[] numbers) {
         boolean isSorted = true;
         while (isSorted) {
             isSorted = false;
@@ -39,10 +29,9 @@ public class SortingMethods {
                 }
             }
         }
-        return numbers;
     }
 
-    private int[] insertionSort(int[] numbers) {
+    public void insertionSort(int[] numbers) {
         int n = numbers.length;
         for (int i = 1; i < n; ++i) {
             int key = numbers[i];
@@ -53,10 +42,9 @@ public class SortingMethods {
             }
             numbers[j + 1] = key;
         }
-        return numbers;
     }
 
-    private int[] selectionSort(int[] numbers) {
+    public void selectionSort(int[] numbers) {
         for (int i = 0; i < numbers.length - 1; i++) {
             int minElementIndex = i;
             for (int j = i + 1; j < numbers.length; j++) {
@@ -64,83 +52,72 @@ public class SortingMethods {
                     minElementIndex = j;
                 }
             }
-
             if (minElementIndex != i) {
                 int temp = numbers[i];
                 numbers[i] = numbers[minElementIndex];
                 numbers[minElementIndex] = temp;
             }
         }
-        return numbers;
     }
 
-    private int[] quickSort(int[] numbers, int from, int to) {
-        if (from < to) {
-            int divideIndex = partition(numbers, from, to);
-            quickSort(numbers, from, divideIndex - 1);
-            quickSort(numbers, divideIndex, to);
+    public void quickSort(int[] arr, int begin, int end) {
+        if (begin < end) {
+            int partitionIndex = partition(arr, begin, end);
+            quickSort(arr, begin, partitionIndex - 1);
+            quickSort(arr, partitionIndex + 1, end);
         }
-        return numbers;
     }
 
-    private static int partition(int[] numbers, int from, int to) {
-        int rightIndex = to;
-        int leftIndex = from;
-        int pivot = numbers[from + (to - from) / 2];
-        while (leftIndex <= rightIndex) {
-            while (numbers[leftIndex] < pivot) {
-                leftIndex++;
-            }
-            while (numbers[rightIndex] > pivot) {
-                rightIndex--;
-            }
-            if (leftIndex <= rightIndex) {
-                swap(numbers, rightIndex, leftIndex);
-                leftIndex++;
-                rightIndex--;
+    private int partition(int[] numbers, int begin, int end) {
+        int pivot = numbers[end];
+        int i = (begin - 1);
+        for (int j = begin; j < end; j++) {
+            if (numbers[j] <= pivot) {
+                i++;
+                int temp = numbers[i];
+                numbers[i] = numbers[j];
+                numbers[j] = temp;
             }
         }
-        return leftIndex;
+        int temp = numbers[i + 1];
+        numbers[i + 1] = numbers[end];
+        numbers[end] = temp;
+        return i + 1;
     }
 
-    private static void swap(int[] array, int index1, int index2) {
-        int tmp = array[index1];
-        array[index1] = array[index2];
-        array[index2] = tmp;
-    }
-
-    private int[] mergeSort(int[] numbers) {
-        int[] tmp;
-        int[] currentSrc = numbers;
-        int[] currentDest = new int[numbers.length];
-        int size = 1;
-        while (size < numbers.length) {
-            for (int i = 0; i < numbers.length; i += 2 * size) {
-                merge(currentSrc, i, currentSrc, i + size, currentDest, i, size);
-            }
-            tmp = currentSrc;
-            currentSrc = currentDest;
-            currentDest = tmp;
-            size = size * 2;
+    public void mergeSort(int[] numbers, int n) {
+        if (n < 2) {
+            return;
         }
-        return currentSrc;
+        int mid = n / 2;
+        int[] numbers1 = new int[mid];
+        int[] numbers2 = new int[n - mid];
+
+        for (int i = 0; i < mid; i++) {
+            numbers1[i] = numbers[i];
+        }
+        for (int i = mid; i < n; i++) {
+            numbers2[i - mid] = numbers[i];
+        }
+        mergeSort(numbers1, mid);
+        mergeSort(numbers2, n - mid);
+        merge(numbers, numbers1, numbers2, mid, n - mid);
     }
 
-    private static void merge(int[] src1, int src1Start, int[] src2, int src2Start, int[] dest, int destStart, int size) {
-        int index1 = src1Start;
-        int index2 = src2Start;
-        int src1End = Math.min(src1Start + size, src1.length);
-        int src2End = Math.min(src2Start + size, src2.length);
-        int iterationCount = src1End - src1Start + src2End - src2Start;
-
-        for (int i = destStart; i < destStart + iterationCount; i++) {
-            if (index1 < src1End && (index2 >= src2End || src1[index1] < src2[index2])) {
-                dest[i] = src1[index1];
-                index1++;
+    public void merge(int[] numbers, int[] numbers1, int[] numbers2, int left, int right) {
+        int i = 0, j = 0, k = 0;
+        while (i < left && j < right) {
+            if (numbers1[i] <= numbers2[j]) {
+                numbers[k++] = numbers1[i++];
             } else {
-                dest[i] = src2[index2];
-                index2++;
+                numbers[k++] = numbers2[j++];
             }
+        }
+        while (i < left) {
+            numbers[k++] = numbers1[i++];
+        }
+        while (j < right) {
+            numbers[k++] = numbers2[j++];
         }
     }
 }
