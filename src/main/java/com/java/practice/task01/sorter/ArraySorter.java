@@ -1,24 +1,24 @@
 package com.java.practice.task01.sorter;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ArraySorter {
-    public void sort(int[] numbers, TypesSorting typesSorting) {
-        switch (typesSorting) {
-            case BUBBLE_SORT:
-                new BubbleSorter().sort(numbers);
-                break;
-            case INSERTION_SORT:
-                new InsertionSorter().sort(numbers);
-                break;
-            case SELECTION_SORT:
-                new SelectionSorter().sort(numbers);
-                break;
-            case MERGE_SORT:
-                new MergeSorter().sort(numbers);
-                break;
-            case QUICK_SORT:
-                new QuickSorter().sort(numbers);
-                break;
-        }
+    private static final Map<SortType, Sort> arraySorterMap;
+    private static final Map<SortType, Sort> sorterMap;
+
+    static {
+        arraySorterMap = new HashMap<>();
+        arraySorterMap.put(SortType.BUBBLE_SORT, new BubbleSorter());
+        arraySorterMap.put(SortType.INSERTION_SORT, new InsertionSorter());
+        arraySorterMap.put(SortType.SELECTION_SORT, new SelectionSorter());
+        arraySorterMap.put(SortType.MERGE_SORT, new MergeSorter());
+        arraySorterMap.put(SortType.QUICK_SORT, new QuickSorter());
+        sorterMap = Collections.unmodifiableMap(arraySorterMap);
+    }
+
+    public void sort(int[] numbers, SortType sortType) {
+        sorterMap.get(sortType).sort(numbers);
     }
 }
-

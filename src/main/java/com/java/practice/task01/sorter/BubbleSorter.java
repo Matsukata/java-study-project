@@ -1,6 +1,6 @@
 package com.java.practice.task01.sorter;
 
-public class BubbleSorter implements SortInt {
+public class BubbleSorter implements Sort {
     @Override
     public void sort(int[] numbers) {
         for (int i = 0; i < numbers.length; i++) {

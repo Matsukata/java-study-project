@@ -1,6 +1,6 @@
 package com.java.practice.task01.sorter;
 
-public class InsertionSorter implements SortInt {
+public class InsertionSorter implements Sort {
     @Override
     public void sort(int[] numbers) {
         for (int i = 1; i < numbers.length; i++) {
@@ -14,4 +14,3 @@ public class InsertionSorter implements SortInt {
         }
     }
 }
-

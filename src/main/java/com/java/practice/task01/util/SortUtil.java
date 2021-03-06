@@ -1,6 +1,6 @@
 package com.java.practice.task01.util;
 
-public class SortingMethods {
+public class SortUtil {
     public void bubbleSortWithFor(int[] numbers) {
         for (int i = (numbers.length - 1); i > 0; i--) {
             for (int j = 1; j <= i; j++) {
@@ -100,8 +100,10 @@ public class SortingMethods {
         merge(a, l, r, mid, n - mid);
     }
 
-    public void merge(int[] a, int[] l, int[] r, int left, int right) {
-        int i = 0, j = 0, k = 0;
+    private void merge(int[] a, int[] l, int[] r, int left, int right) {
+        int i = 0;
+        int j = 0;
+        int k = 0;
         while (i < left && j < right) {
             if (l[i] <= r[j]) {
                 a[k++] = l[i++];

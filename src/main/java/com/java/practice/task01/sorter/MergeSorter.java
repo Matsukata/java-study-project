@@ -1,6 +1,6 @@
 package com.java.practice.task01.sorter;
 
-public class MergeSorter implements SortInt {
+public class MergeSorter implements Sort {
     @Override
     public void sort(int[] numbers) {
         mergeSort(numbers, numbers.length);

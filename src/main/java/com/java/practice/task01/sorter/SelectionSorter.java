@@ -1,6 +1,6 @@
 package com.java.practice.task01.sorter;
 
-public class SelectionSorter implements SortInt {
+public class SelectionSorter implements Sort {
     @Override
     public void sort(int[] numbers) {
         for (int i = 0; i < numbers.length - 1; i++) {
