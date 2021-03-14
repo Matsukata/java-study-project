@@ -3,7 +3,7 @@ package com.java.practice.task01.sorter;
 public class QuickSorter implements Sort {
     @Override
     public void sort(int[] numbers) {
-        quickSort(numbers, numbers[0], numbers[numbers.length]);
+        quickSort(numbers, 0, numbers.length - 1);
     }
 
     private void quickSort(int[] numbers, int begin, int end) {

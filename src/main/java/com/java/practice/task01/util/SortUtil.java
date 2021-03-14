@@ -17,10 +17,10 @@ public class SortUtil {
         boolean isSorted = true;
         while (isSorted) {
             isSorted = false;
-            for (int i = 1; i < numbers.length - 1; i++) {
-                if (numbers[i - 1] > numbers[i]) {
-                    int temp = numbers[i - 1];
-                    numbers[i - 1] = numbers[i];
+            for (int i = 0; i < numbers.length - 1; i++) {
+                if (numbers[i + 1] < numbers[i]) {
+                    int temp = numbers[i + 1];
+                    numbers[i + 1] = numbers[i];
                     numbers[i] = temp;
                     isSorted = true;
                 }
@@ -56,6 +56,10 @@ public class SortUtil {
         }
     }
 
+    public void quickSort(int[] array) {
+        quickSort(array, 0, array.length - 1);
+    }
+
     public void quickSort(int[] numbers, int begin, int end) {
         if (begin < end) {
             int partitionIndex = partition(numbers, begin, end);
@@ -79,6 +83,10 @@ public class SortUtil {
         numbers[i + 1] = numbers[end];
         numbers[end] = temp;
         return i + 1;
+    }
+
+    public void mergeSort(int[] array) {
+        mergeSort(array, array.length);
     }
 
     public void mergeSort(int[] a, int n) {
