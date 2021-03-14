@@ -6,7 +6,7 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 @RunWith(Parameterized.class)
 public class SorterParameterizedTest {
@@ -30,7 +30,7 @@ public class SorterParameterizedTest {
         Arrays.sort(numbers);
         expected = numbers;
         bubbleSorter.sort(numbers);
-        assertEquals(Arrays.toString(numbers), Arrays.toString(expected));
+        assertArrayEquals(numbers, expected);
     }
 
     @Test
@@ -38,6 +38,6 @@ public class SorterParameterizedTest {
         Arrays.sort(numbers);
         expected = numbers;
         quickSorter.sort(numbers);
-        assertEquals(Arrays.toString(numbers), Arrays.toString(expected));
+        assertArrayEquals(numbers, expected);
     }
 }
