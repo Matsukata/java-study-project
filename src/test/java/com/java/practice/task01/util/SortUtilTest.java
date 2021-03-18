@@ -7,11 +7,12 @@ import java.util.Arrays;
 import static org.junit.Assert.assertArrayEquals;
 
 public class SortUtilTest {
+    private static final int[] ARRAY = {2, 4, -10, 3, -40, 2, 100, -1000, 0, 59};
     SortUtil sortUtil = new SortUtil();
 
     @Test
     public void bubbleSortWithFor() {
-        int[] array = {2, 4, -10, 3, -40, 2, 100, -1000, 0, 59};
+        int[] array = SortUtilTest.ARRAY;
         int[] expected = Arrays.copyOf(array, array.length);
         Arrays.sort(expected);
         sortUtil.bubbleSortWithFor(array);
@@ -20,7 +21,7 @@ public class SortUtilTest {
 
     @Test
     public void bubbleSortWithWhile() {
-        int[] array = {2, 4, -10, 3, -40, 2, 100, -1000, 0, 59};
+        int[] array = SortUtilTest.ARRAY;
         int[] expected = Arrays.copyOf(array, array.length);
         Arrays.sort(expected);
         sortUtil.bubbleSortWithWhile(array);
@@ -29,7 +30,7 @@ public class SortUtilTest {
 
     @Test
     public void insertionSort() {
-        int[] array = {2, 4, -10, 3, -40, 2, 100, -1000, 0, 59};
+        int[] array = SortUtilTest.ARRAY;
         int[] expected = Arrays.copyOf(array, array.length);
         Arrays.sort(expected);
         sortUtil.insertionSort(array);
@@ -38,7 +39,7 @@ public class SortUtilTest {
 
     @Test
     public void selectionSort() {
-        int[] array = {2, 4, -10, 3, -40, 2, 100, -1000, 0, 59};
+        int[] array = SortUtilTest.ARRAY;
         int[] expected = Arrays.copyOf(array, array.length);
         Arrays.sort(expected);
         sortUtil.selectionSort(array);
@@ -47,7 +48,7 @@ public class SortUtilTest {
 
     @Test
     public void quickSort() {
-        int[] array = {2, 4, -10, 3, -40, 2, 100, -1000, 0, 59};
+        int[] array = SortUtilTest.ARRAY;
         int[] expected = Arrays.copyOf(array, array.length);
         Arrays.sort(expected);
         sortUtil.quickSort(array);
@@ -56,7 +57,7 @@ public class SortUtilTest {
 
     @Test
     public void mergeSort() {
-        int[] array = {2, 4, -10, 3, -40, 2, 100, -1000, 0, 59};
+        int[] array = SortUtilTest.ARRAY;
         int[] expected = Arrays.copyOf(array, array.length);
         Arrays.sort(expected);
         sortUtil.mergeSort(array);

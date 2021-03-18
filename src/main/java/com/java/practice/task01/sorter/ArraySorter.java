@@ -9,6 +9,10 @@ public class ArraySorter {
             SortType.MERGE_SORT, new MergeSorter(),
             SortType.QUICK_SORT, new QuickSorter());
 
+    public static Map<SortType, Sort> getSorterMap() {
+        return sorterMap;
+    }
+
     public void sort(int[] numbers, SortType sortType) {
         sorterMap.get(sortType).sort(numbers);
     }
