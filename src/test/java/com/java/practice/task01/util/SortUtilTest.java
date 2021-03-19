@@ -12,55 +12,49 @@ public class SortUtilTest {
 
     @Test
     public void bubbleSortWithFor() {
-        int[] array = SortUtilTest.ARRAY;
-        int[] expected = Arrays.copyOf(array, array.length);
+        int[] expected = Arrays.copyOf(ARRAY, ARRAY.length);
         Arrays.sort(expected);
-        sortUtil.bubbleSortWithFor(array);
-        assertArrayEquals(expected, array);
+        sortUtil.bubbleSortWithFor(ARRAY);
+        assertArrayEquals(expected, ARRAY);
     }
 
     @Test
     public void bubbleSortWithWhile() {
-        int[] array = SortUtilTest.ARRAY;
-        int[] expected = Arrays.copyOf(array, array.length);
+        int[] expected = Arrays.copyOf(ARRAY, ARRAY.length);
         Arrays.sort(expected);
-        sortUtil.bubbleSortWithWhile(array);
-        assertArrayEquals(expected, array);
+        sortUtil.bubbleSortWithWhile(ARRAY);
+        assertArrayEquals(expected, ARRAY);
     }
 
     @Test
     public void insertionSort() {
-        int[] array = SortUtilTest.ARRAY;
-        int[] expected = Arrays.copyOf(array, array.length);
+        int[] expected = Arrays.copyOf(ARRAY, ARRAY.length);
         Arrays.sort(expected);
-        sortUtil.insertionSort(array);
-        assertArrayEquals(expected, array);
+        sortUtil.insertionSort(ARRAY);
+        assertArrayEquals(expected, ARRAY);
     }
 
     @Test
     public void selectionSort() {
-        int[] array = SortUtilTest.ARRAY;
-        int[] expected = Arrays.copyOf(array, array.length);
+        int[] expected = Arrays.copyOf(ARRAY, ARRAY.length);
         Arrays.sort(expected);
-        sortUtil.selectionSort(array);
-        assertArrayEquals(expected, array);
+        sortUtil.selectionSort(ARRAY);
+        assertArrayEquals(expected, ARRAY);
     }
 
     @Test
     public void quickSort() {
-        int[] array = SortUtilTest.ARRAY;
-        int[] expected = Arrays.copyOf(array, array.length);
+        int[] expected = Arrays.copyOf(ARRAY, ARRAY.length);
         Arrays.sort(expected);
-        sortUtil.quickSort(array);
-        assertArrayEquals(expected, array);
+        sortUtil.quickSort(ARRAY);
+        assertArrayEquals(expected, ARRAY);
     }
 
     @Test
     public void mergeSort() {
-        int[] array = SortUtilTest.ARRAY;
-        int[] expected = Arrays.copyOf(array, array.length);
+        int[] expected = Arrays.copyOf(ARRAY, ARRAY.length);
         Arrays.sort(expected);
-        sortUtil.mergeSort(array);
-        assertArrayEquals(expected, array);
+        sortUtil.mergeSort(ARRAY);
+        assertArrayEquals(expected, ARRAY);
     }
 }

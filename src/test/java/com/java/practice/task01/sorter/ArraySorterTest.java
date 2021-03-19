@@ -29,107 +29,110 @@ public class ArraySorterTest {
     private final int[] negativeNumbersDescendingOrderSortedArray = new int[]{-9, -8, -7, -6, -5, -4, -3, -2, -1};
     private final int[] repeatedNumbersArray = new int[]{-10, -4, -10, -3, -40, -2, -100};
 
+    private final ArraySorter arraySorter = new ArraySorter();
+
     @Parameterized.Parameter
-    public Sort sort;
+    public SortType sortType;
+
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {ArraySorter.getSorterMap().get(BUBBLE_SORT)},
-                {ArraySorter.getSorterMap().get(INSERTION_SORT)},
-                {ArraySorter.getSorterMap().get(SELECTION_SORT)},
-                {ArraySorter.getSorterMap().get(QUICK_SORT)},
-                {ArraySorter.getSorterMap().get(MERGE_SORT)}
+                {BUBBLE_SORT},
+                {INSERTION_SORT},
+                {SELECTION_SORT},
+                {QUICK_SORT},
+                {MERGE_SORT}
         });
-    }
-
-    private int[] getExpected(int[] array) {
-        int[] expected = Arrays.copyOf(array, array.length);
-        Arrays.sort(expected);
-        return expected;
     }
 
     @Test
     public void EmptySort() {
         int[] expected = getExpected(emptyArray);
-        sort.sort(emptyArray);
+        arraySorter.sort(emptyArray, sortType);
         assertArrayEquals(expected, emptyArray);
     }
 
     @Test
     public void oneElementSort() {
         int[] expected = getExpected(oneElementArray);
-        sort.sort(oneElementArray);
+        arraySorter.sort(oneElementArray, sortType);
         assertArrayEquals(expected, oneElementArray);
     }
 
     @Test
     public void mixedNumbersArraySort() {
         int[] expected = getExpected(mixedNumbersArray);
-        sort.sort(mixedNumbersArray);
+        arraySorter.sort(mixedNumbersArray, sortType);
         assertArrayEquals(expected, mixedNumbersArray);
     }
 
     @Test
     public void underscoreNumbersArraySort() {
         int[] expected = getExpected(underscoreNumbersArray);
-        sort.sort(underscoreNumbersArray);
+        arraySorter.sort(underscoreNumbersArray, sortType);
         assertArrayEquals(expected, underscoreNumbersArray);
     }
 
     @Test
     public void largeNumbersArraySort() {
         int[] expected = getExpected(largeNumbersArray);
-        sort.sort(largeNumbersArray);
+        arraySorter.sort(largeNumbersArray, sortType);
         assertArrayEquals(expected, largeNumbersArray);
     }
 
     @Test
     public void zeroAndOneArraySort() {
         int[] expected = getExpected(zeroAndOneArray);
-        sort.sort(zeroAndOneArray);
+        arraySorter.sort(zeroAndOneArray, sortType);
         assertArrayEquals(expected, zeroAndOneArray);
     }
 
     @Test
     public void firstAndLastWrongElementArraySort() {
         int[] expected = getExpected(firstAndLastWrongElementArray);
-        sort.sort(firstAndLastWrongElementArray);
+        arraySorter.sort(firstAndLastWrongElementArray, sortType);
         assertArrayEquals(expected, firstAndLastWrongElementArray);
     }
 
     @Test
     public void naturalOrderSortedArraySort() {
         int[] expected = getExpected(naturalOrderSortedArray);
-        sort.sort(naturalOrderSortedArray);
+        arraySorter.sort(naturalOrderSortedArray, sortType);
         assertArrayEquals(expected, naturalOrderSortedArray);
     }
 
     @Test
     public void descendingOrderSortedArraySort() {
         int[] expected = getExpected(descendingOrderSortedArray);
-        sort.sort(descendingOrderSortedArray);
+        arraySorter.sort(descendingOrderSortedArray, sortType);
         assertArrayEquals(expected, descendingOrderSortedArray);
     }
 
     @Test
     public void negativeNumbersSortedArraySort() {
         int[] expected = getExpected(negativeNumbersSortedArray);
-        sort.sort(negativeNumbersSortedArray);
+        arraySorter.sort(negativeNumbersSortedArray, sortType);
         assertArrayEquals(expected, negativeNumbersSortedArray);
     }
 
     @Test
     public void negativeNumbersDescendingOrderSortedArraySort() {
         int[] expected = getExpected(negativeNumbersDescendingOrderSortedArray);
-        sort.sort(negativeNumbersDescendingOrderSortedArray);
+        arraySorter.sort(negativeNumbersDescendingOrderSortedArray, sortType);
         assertArrayEquals(expected, negativeNumbersDescendingOrderSortedArray);
     }
 
     @Test
     public void repeatedNumbersArraySort() {
         int[] expected = getExpected(repeatedNumbersArray);
-        sort.sort(repeatedNumbersArray);
+        arraySorter.sort(repeatedNumbersArray, sortType);
         assertArrayEquals(expected, repeatedNumbersArray);
+    }
+
+    private int[] getExpected(int[] array) {
+        int[] expected = Arrays.copyOf(array, array.length);
+        Arrays.sort(expected);
+        return expected;
     }
 }
